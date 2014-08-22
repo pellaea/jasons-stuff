@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cp bash_aliases ~/.bash_aliases
+cp screenrc ~/.screenrc
+cp tcsh_aliases ~/.tcshrc
+cp vimrc ~/.vimrc
+
