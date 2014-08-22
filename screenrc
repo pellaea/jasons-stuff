@@ -1,0 +1,22 @@
+escape          ^Aa
+defscrollback   1000
+defobuflimit    4096
+multiuser       off
+startup_message off
+defmonitor      off
+vbell           on
+msgwait         1
+vbellwait       0
+hardstatus      off
+
+bufferfile  ${HOME}/.screen/screen-exchange
+hardcopydir ${HOME}/.screen
+logfile     ${HOME}/.screen/log.%n
+
+screen -t zero  0 /bin/tcsh
+screen -t one   1 /bin/tcsh
+screen -t two   2 /bin/tcsh
+screen -t three 3 /bin/tcsh
+
+bind k   kill
+bind ^K  quit

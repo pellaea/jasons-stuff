@@ -1,0 +1,62 @@
+set noclobber
+set history=50 savehist=400 merge
+set rmstar ignoreeof notify filec hardpaths
+set filec hardpaths
+set term=xterm
+set prompt_end="> "
+unset time
+
+setenv LC_COLLATE      C
+setenv TZ 'America/Los_Angeles'
+# setenv TZ 'America/Denver'
+# setenv TZ 'America/Chicago'
+# setenv TZ 'America/New_York'
+
+alias cwdcmd 'set cwd=`pwd`; set prompt=`echo $home":" | sed s/.// | sed s/home.// | sed s/'$USER'://`"$cwd$prompt_end"'
+alias cd     'set last="$cwd" ; chdir \!* ; cwdcmd'
+alias pushd  'set last="$cwd" ; pushd \!* ; cwdcmd'
+alias popd   'set last="$cwd" ; popd  \!* ; cwdcmd'
+alias last   echo \$last
+cwdcmd
+
+alias  dir       ls -AF
+alias  dirf      ls2 -AlF
+alias  dirt      ls2 -AlrtF
+alias  dirz      ls3 -lF
+alias  dird      'ls2 -lF | grep ^d'
+alias  dirx      'ls2 -AdlF [^.]* | grep -v "^[ld]"'
+
+alias  cd..      cd ..
+alias  rd        rmdir
+alias  md        'mkdir \!*; chmod 777 \!*'
+alias  cls       clear
+alias  del       rm -f
+alias  mv        mv -i
+alias  cp        cp -i
+alias  grep      grep -s
+alias  !         history
+alias  pod       perldoc
+
+alias  rx        chmod 777  '\!*'
+alias  rw        chmod 666  '\!*'
+alias  +x        chmod a+x  '\!*'
+alias  +w        chmod a+rw '\!*'
+alias  -x        chmod a-x  '\!*'
+alias  -w        chmod a-w  '\!*'
+
+alias  s         source ~/.alias
+alias  aka       vim ~/.alias \; source ~/.alias
+alias  what      \( alias \| egrep '"^\!:1[^a-zA-Z0-9_]"' \)
+
+alias  dos2unix  perl -p -i -e "'"'s/[\r\n]*$/\n/o'"'" '\!*'
+alias  unix2dos  perl -p -i -e "'"'s/[\r\n]*$/\r\n/o'"'" '\!*'
+alias  deutf     perl -pi -e "'"'s/\A\xFE\xFF//xg; s/\A\xEF\xBB\xBF//xg; s/\s*\r\n\Z/\n/xg; $_'"'" \!\*
+alias  lc        perl -e \''foreach (@ARGV) { rename $_, lc($_) }'\'
+
+alias  pgrep     perl -n -e "'"'BEGIN { $X = shift @ARGV }; print "$ARGV: $_" if /$X/o'"'" '\!:1' \!:2-$
+alias  uniq      perl -n -e "'"'print unless $seen{$_}++'"'"
+alias  vgrep     'vim `\!grep:0 -l \!grep:*`'
+alias  vfind     'vim `find \!:2 -not -wholename "*/.git/*" -type f -exec egrep -l \!:1 \{} \;`'
+alias  pfind     'find \!:2 -not -wholename "*/.git/*" -type f -exec egrep -H \!:1 \{} \;'
+alias  calc      perl -e "'print(("'\!*:q''), "\n")'"'"
+
