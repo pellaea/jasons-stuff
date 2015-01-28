@@ -4,9 +4,3 @@ cp bash_aliases ~/.bash_aliases
 cp screenrc ~/.screenrc
 cp tcsh_aliases ~/.tcshrc
 cp vimrc ~/.vimrc
-
-Blah 1.
-Blah 2.
-Blah 3.
-Blah 4.
-Blah 5.
