@@ -5,8 +5,8 @@ cp screenrc ~/.screenrc
 cp tcsh_aliases ~/.tcshrc
 cp vimrc ~/.vimrc
 
-Line 1.
-Line 2.
-Line 3.
-Line 4.
-Line 5.
+Blah 1.
+Blah 2.
+Blah 3.
+Blah 4.
+Blah 5.
